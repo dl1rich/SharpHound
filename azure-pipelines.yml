@@ -1,7 +1,6 @@
 # .NET Desktop
-# Build and run tests for .NET Desktop or Windows classic desktop solutions.
-# Add steps that publish symbols, save build artifacts, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/apps/windows/dot-net
+
+
 
 trigger:
 - 2.X
@@ -20,7 +19,10 @@ steps:
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
-
+- task: DotNetCoreCLI@2
+  inputs:
+    azureSubscription: 'Azure subscription 1(2085fe0b-24a3-4f95-bf6e-c5d66a14c14d)'
+    command: 'build'
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
